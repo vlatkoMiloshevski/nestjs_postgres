@@ -1,10 +1,10 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
-import { AppService } from './app.service';
-import { NewPerson, Person } from './db/model/person.db';
+import { PersonService } from './person.service';
+import { NewPerson, Person } from '../db/model/person.db';
 
-@Controller('person')
-export class AppController {
-  constructor(private readonly appService: AppService) { }
+@Controller('persons')
+export class PersonController {
+  constructor(private readonly appService: PersonService) { }
 
   @Get()
   getPersons(): any {

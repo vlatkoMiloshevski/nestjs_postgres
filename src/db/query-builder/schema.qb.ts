@@ -23,6 +23,13 @@ export class ClientConnection {
                 FirstName varchar(255), 
                 Address varchar(255), 
                 City varchar(255)
+            );
+
+            CREATE TABLE IF NOT EXISTS Photos 
+            (
+                PhotoID SERIAL PRIMARY KEY,
+                Description varchar(255),
+                PersonID integer not null references persons(PersonID)
             );`, (err) => {
                 done();
                 console.log(err ? err : 'db server is up and running');

@@ -11,7 +11,7 @@ export class PersonQueryBuilder {
 
     public async getPersons(): Promise<Person[] | Error> {
         const client = await this.clientConnection.getPool().connect();
-        const clientQuery = await client.query('SELECT * FROM persons ORDER BY personid ASC');
+        const clientQuery = await client.query('SELECT personid, lastname, firstname, city, address, (SELECT count(*) as num_of_photos FROM photos WHERE photos.personid = persons.personid) FROM persons ORDER BY personid ASC');
         client.end();
         return clientQuery.rows;
     }

@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { NewPerson, Person } from './db/model/person.db';
-import { PersonQueryBuilder } from './db/query-builder/person.qb';
+import { NewPerson, Person } from '../db/model/person.db';
+import { PersonQueryBuilder } from '../db/query-builder/person.qb';
 
 @Injectable()
-export class AppService {
+export class PersonService {
   constructor(
     private readonly personQueryBuilder: PersonQueryBuilder
   ) {
