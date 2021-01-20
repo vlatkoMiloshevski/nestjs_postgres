@@ -1,6 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UsePipes, ValidationPipe } from '@nestjs/common';
+import { NewPerson } from 'src/db/model/person.db';
+import { PersonDTO } from 'src/dto/person.dto';
 import { PersonService } from './person.service';
-import { NewPerson, Person } from '../db/model/person.db';
 
 @Controller('persons')
 export class PersonController {
@@ -24,7 +25,7 @@ export class PersonController {
 
   @Put()
   @UsePipes(new ValidationPipe({ whitelist: true }))
-  updatePerson(@Body() person: Person): any {
+  updatePerson(@Body() person: PersonDTO): any {
     return this.appService.updatePerson(person);
   }
 

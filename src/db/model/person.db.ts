@@ -1,8 +1,11 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty } from "class-validator";
-import { Photo } from "./photo.db";
+import { Photo } from "src/db/model/photo.db";
 
 export class NewPerson {
+    @ApiProperty()
+    @IsNotEmpty()
+    personid: number;
     @ApiProperty()
     @IsNotEmpty()
     lastname: string;
@@ -35,5 +38,5 @@ export class Person {
     address: string;
     @ApiProperty()
     @IsNotEmpty()
-    num_of_photos: number;
+    photoList: Photo[];
 }
